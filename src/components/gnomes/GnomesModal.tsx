@@ -1,7 +1,10 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
-import { Button, Card, CardActionArea, CardMedia, CardContent, Typography, ListItem } from '@material-ui/core';
+import { red } from '@material-ui/core/colors';
+import MoreVertIcon from '@material-ui/icons/MoreVert';
+
+import { Button, Card, CardActionArea, CardMedia, CardContent, Typography, ListItem, CardHeader, Avatar, IconButton } from '@material-ui/core';
 function getModalStyle() {
     const top = 50;
     const left = 50;
@@ -23,10 +26,14 @@ const useStyles = makeStyles(theme => ({
     },
     card: {
         maxWidth: 345,
-    },
-    media: {
-        height: 140,
-    },
+      },
+      media: {
+        height: 0,
+        paddingTop: '56.25%', // 16:9
+      },
+      avatar: {
+        backgroundColor: red[500],
+      },
 }));
 
 const GnomesModal = (propModalData: any) => {
@@ -50,9 +57,9 @@ const GnomesModal = (propModalData: any) => {
                 open={open}
                 onClose={handleClose}
             >
-                <div style={modalStyle} className={classes.paper}>
+                <div style={modalStyle} className={classes.paper} >
 
-                    <Card>
+                    <Card >
                         <CardActionArea>
                             <CardMedia
                                 className={classes.media}
@@ -64,10 +71,10 @@ const GnomesModal = (propModalData: any) => {
                                     {propModalData.propModalData.name}
                                 </Typography>
                                 <Typography variant="body2" color="textSecondary" component="p">
-                                   <ListItem>Age {propModalData.propModalData.age} </ListItem>
-                                   <ListItem>Weight {propModalData.propModalData.weight} </ListItem>
-                                   <ListItem>Height {propModalData.propModalData.height} </ListItem>
-                                   <ListItem>Hair Color {propModalData.propModalData.hair_color} </ListItem>
+                                    <ListItem>Age {propModalData.propModalData.age} </ListItem>
+                                    <ListItem>Weight {propModalData.propModalData.weight} </ListItem>
+                                    <ListItem>Height {propModalData.propModalData.height} </ListItem>
+                                    <ListItem>Hair Color {propModalData.propModalData.hair_color} </ListItem>
                                 </Typography>
                                 <Typography variant="body2" color="textSecondary" component="p">
                                     <b>Professions</b> {propModalData.propModalData.professions.map((profession: any, key: string) => {

@@ -6,20 +6,27 @@ import Grid from '@material-ui/core/Grid';
 import { IGnome } from '../models/IGnome';
 import SpinnerComponent from './gnomes/SpinnerComponent';
 import GnomesPagination from './gnomes/GnomesPagination';
+import 'typeface-roboto';
 
 const MainComponent = () => {
 
-    
+
     const useStyles = makeStyles(theme => ({
         root: {
             flexGrow: 1,
-            margin: '25px', 
+            margin: '0 20% 0 20%',
+            fontFamily: 'typeface-roboto'
         },
         paper: {
             padding: theme.spacing(2),
             textAlign: 'center',
             color: theme.palette.text.secondary,
         },
+        styling: {
+            textAlign: 'center',
+            marginTop: '0.5 rem',
+            fontSize: '25px',
+        }
 
     }));
     const classes = useStyles();
@@ -30,7 +37,7 @@ const MainComponent = () => {
     const [filteredGnomes, setFilteredGnomes] = useState([]);
     //pagination
     const [currentPage, setCurrentPage] = useState(1);
-    const [gnomesPerPage, setGnomesPerPage] = useState(24);
+    const [gnomesPerPage, setGnomesPerPage] = useState(12);
     const indexOfLastPost = currentPage * gnomesPerPage;
     const indexOfFirstPost = indexOfLastPost - gnomesPerPage;
     const currentPosts = filteredGnomes.slice(indexOfFirstPost, indexOfLastPost);
@@ -79,10 +86,18 @@ const MainComponent = () => {
     return (
 
         <div className={classes.root}>
-            <h2>Gnomes component</h2>
-            <TextField inputRef={inputName} id="standard-basic" label="Gnome Name" onChange={(e: any) => filterGnomes(e, 'name')} />
-            <TextField inputRef={inputAge} id="standard-basic" label="Gnome Age" onChange={(e: any) => filterGnomes(e, 'age')} />
-            <p />
+            <Grid container spacing={3}>
+                <Grid item xs={12} className={classes.styling}>
+                    <h2>Gnomes component</h2>
+                </Grid>
+                <Grid item xs={12} md={3}>
+                    <TextField inputRef={inputName} id="standard-basic" label="Gnome Name" onChange={(e: any) => filterGnomes(e, 'name')} />
+                </Grid>
+                <Grid item xs={12} md={3}>
+                    <TextField inputRef={inputAge} id="standard-basic" label="Gnome Age" onChange={(e: any) => filterGnomes(e, 'age')} />
+                </Grid>
+                <p />
+            </Grid>
             <div>
                 <Grid container spacing={3}>
                     {currentPosts.length > 0 && currentPosts.map((gnome: IGnome, key: number) => {
