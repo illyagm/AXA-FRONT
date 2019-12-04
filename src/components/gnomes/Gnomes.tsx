@@ -1,64 +1,79 @@
 import React from 'react'
-import { Grid, Paper, makeStyles, CardHeader, Avatar, IconButton } from '@material-ui/core';
+import { Grid, Paper, makeStyles, CardHeader, Card } from '@material-ui/core';
+import styled from "styled-components";
 import GnomesModal from './GnomesModal';
 import { IModalGnomeProps } from '../../interfaces/IModalGnomeProps';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { red, deepOrange, deepPurple } from '@material-ui/core/colors';
 
+interface avatarColor {
+  hairColor: string,
+}
+
+const AvatarColor = styled.div<avatarColor>`
+    background: ${(props: { hairColor: any; }) => props.hairColor};
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: 700;
+`
 const useStyles = makeStyles(theme => ({
-    root: {
-        flexGrow: 1,
-        width: '100%',
-        maxWidth: 360,
-    },
-    paper: {
-        padding: theme.spacing(2),
-        textAlign: 'center',
-        color: theme.palette.text.secondary,
-    },
-    card: {
-        maxWidth: 345,
-      },
-      media: {
-        height: 0,
-        paddingTop: '56.25%', // 16:9
-      },
-      avatar: {
-        backgroundColor: red[500],
-      },
-      orange: {
-        color: '#fff',
-        backgroundColor: deepOrange[500],
-      },
-      purple: {
-        color: '#fff',
-        backgroundColor: deepPurple[500],
-      },
+
+  root: {
+    flexGrow: 1,
+    width: '100%',
+    maxWidth: 360,
+  },
+  paper: {
+    padding: theme.spacing(2),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+  },
+  card: {
+    maxWidth: 345,
+  },
+  media: {
+    height: 0,
+    paddingTop: '56.25%', // 16:9
+  },
+  avatar: {
+    backgroundColor: red[500],
+  },
+  orange: {
+    color: '#fff',
+    backgroundColor: deepOrange[500],
+  },
+  purple: {
+    color: '#fff',
+    backgroundColor: deepPurple[500],
+  },
 }));
 
 const capitalizeFirstLetter = (gnomeName: string) => {
-    return gnomeName.charAt(1).toUpperCase();
-    
+  return gnomeName.charAt(1).toUpperCase();
+
 }
 
-const Gnomes = (gnomeProps: IModalGnomeProps, loading:boolean) => {
-    const classes = useStyles();
+const Gnomes = (gnomeProps: IModalGnomeProps, loading: boolean) => {
+  const classes = useStyles();
 
-    /*
-    if(loading){
-        return <h2>Loading...</h2>;
-    } 
-    */
-    return (
-        <Grid item xs={12} md={3}>
 
-            <Paper className={classes.paper}>
-            <Avatar className={classes.orange}>{capitalizeFirstLetter(JSON.stringify(gnomeProps.name))}</Avatar>
-                <p>{gnomeProps.name}</p>
-                <p>{gnomeProps.age}</p>
-                <GnomesModal propModalData = {gnomeProps} />
-            </Paper>
-        </Grid>
-    )
+  return (
+    <Grid item xs={12} md={3}>
+       <Card className={classes.card}>
+      <CardHeader
+        avatar={
+          <AvatarColor hairColor={gnomeProps.hair_color as string}>{capitalizeFirstLetter(JSON.stringify(gnomeProps.name))}</AvatarColor>
+        }
+        title={gnomeProps.name}
+        subheader={gnomeProps.age}
+      />
+        <GnomesModal propModalData={gnomeProps} />
+      </Card>
+    </Grid>
+  )
 }
 export default Gnomes;
