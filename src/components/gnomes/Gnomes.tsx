@@ -1,5 +1,5 @@
 import React from 'react'
-import { Grid, Paper, makeStyles, CardHeader, Card } from '@material-ui/core';
+import { Grid, makeStyles, CardHeader, Card } from '@material-ui/core';
 import styled from "styled-components";
 import GnomesModal from './GnomesModal';
 import { IModalGnomeProps } from '../../interfaces/IModalGnomeProps';

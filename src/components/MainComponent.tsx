@@ -1,13 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react'
 import Gnomes from './gnomes/Gnomes'
 import GnomeService from '../services/gnomes/GnomeService';
-import { TextField, makeStyles, Box} from '@material-ui/core';
+import { TextField, makeStyles, Box, MenuItem } from '@material-ui/core';
 import styled from "styled-components";
 import Grid from '@material-ui/core/Grid';
 import { IGnome } from '../models/IGnome';
-import SpinnerComponent from './gnomes/SpinnerComponent';
 import GnomesPagination from './gnomes/GnomesPagination';
-import BrastlewarkWelcome from './gnomes/BrastlewarkWelcome';
 import 'typeface-roboto';
 
 const MainComponent = () => {
@@ -17,7 +15,7 @@ const MainComponent = () => {
         root: {
             flexGrow: 1,
             margin: '0 20% 0 20%',
-          
+
         },
         paper: {
             padding: theme.spacing(2),
@@ -41,7 +39,6 @@ const MainComponent = () => {
     const classes = useStyles();
 
     const gnomeService = new GnomeService();
-    const [loading, setLoading] = useState(false);
     const [gnomes, setGnomes] = useState([]);
     const [filteredGnomes, setFilteredGnomes] = useState([]);
     //pagination
@@ -52,16 +49,15 @@ const MainComponent = () => {
     const currentPosts = filteredGnomes.slice(indexOfFirstPost, indexOfLastPost);
     //change page
     const paginate = (pageNumber: any) => { setCurrentPage(pageNumber) };
-
+    //Filtering consts
     const inputName = useRef(null);
     const inputAge = useRef(null);
+    //api request
     const loadGnomesData = () => {
-        setLoading(true);
         gnomeService.getAll().then(response => {
             setGnomes(response.data.Brastlewark);
             setFilteredGnomes(response.data.Brastlewark);
         });
-        setLoading(false);
     };
 
     //el use effect sustituye al componentDidMount en los functional components - es lo que va a pasar antes de renderizar el componente.
@@ -72,11 +68,7 @@ const MainComponent = () => {
         //en los corchetes podemos indicar una variable, de manera que cada vez que cambie, se efectuará el useEffect
         [],
     );
-    const spinnerInfo = () => {
-        return <SpinnerComponent />
-    }
     const filterGnomes = (e: any, propertyName: string) => {
-        if (loading === false) {
             let filteredGnomesList: any = [];
             if ((inputName as any).current.value !== '' || (inputAge as any).current.value !== '') {
                 filteredGnomesList = gnomes.filter(
@@ -87,9 +79,6 @@ const MainComponent = () => {
                 filteredGnomesList = gnomes.filter((gnome: any) => gnome[propertyName].toString().includes(e.target.value));
             }
             setFilteredGnomes(filteredGnomesList);
-        } else {
-            spinnerInfo();
-        }
     }
     const Title = styled.h3`
         margin: 20px 0;
@@ -107,7 +96,17 @@ const MainComponent = () => {
                     <TextField inputRef={inputAge} className={classes.InputField} id="standard-basic" label="Filter by Age" onChange={(e: any) => filterGnomes(e, 'age')} />
                 </Grid>
                 <Grid item xs={12} md={2}>
-                    <TextField inputRef={inputAge} className={classes.InputField} id="standard-basic" label="Filter by Age" onChange={(e: any) => filterGnomes(e, 'age')} />
+                    <TextField
+                        id="standard-select-currency"
+                        select
+                        label="Select"
+                        helperText="Filter By Profession"
+                        margin="none"
+                    >
+                        <MenuItem>
+                            1
+                        </MenuItem>
+                    </TextField>
                 </Grid>
                 <p />
             </Grid>
@@ -118,7 +117,7 @@ const MainComponent = () => {
                     })}
                 </Grid>
             </div>
-            <p></p>
+
             <Box display="flex" justifyContent="center"><GnomesPagination gnomesPerPage={gnomesPerPage} filteredGnomes={filteredGnomes.length} paginate={paginate} /></Box>
         </div>
     )
