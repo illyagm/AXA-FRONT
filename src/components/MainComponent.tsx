@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import Gnomes from './gnomes/Gnomes'
 import GnomeService from '../services/gnomes/GnomeService';
-import { TextField, makeStyles, Box, MenuItem } from '@material-ui/core';
+import { TextField, makeStyles, Box } from '@material-ui/core';
 import styled from "styled-components";
 import Grid from '@material-ui/core/Grid';
 import { IGnome } from '../models/IGnome';
@@ -94,19 +94,6 @@ const MainComponent = () => {
                 </Grid>
                 <Grid item xs={12} md={2}>
                     <TextField inputRef={inputAge} className={classes.InputField} id="standard-basic" label="Filter by Age" onChange={(e: any) => filterGnomes(e, 'age')} />
-                </Grid>
-                <Grid item xs={12} md={2}>
-                    <TextField
-                        id="standard-select-currency"
-                        select
-                        label="Select"
-                        helperText="Filter By Profession"
-                        margin="none"
-                    >
-                        <MenuItem>
-                            1
-                        </MenuItem>
-                    </TextField>
                 </Grid>
                 <p />
             </Grid>
