@@ -1,8 +1,8 @@
 import React from 'react'
 import { Grid, makeStyles, CardHeader, Card } from '@material-ui/core';
 import styled from "styled-components";
-import GnomesModal from './GnomesModal';
-import { IModalGnomeProps } from '../../interfaces/IModalGnomeProps';
+import GnomesModal from '../gnomesModal/GnomesModal';
+import { IModalGnomeProps } from '../gnomesModal/IModalGnomeProps';
 import { red, deepOrange, deepPurple } from '@material-ui/core/colors';
 
 interface avatarColor {
@@ -18,10 +18,9 @@ const AvatarColor = styled.div<avatarColor>`
     justify-content: center;
     align-items: center;
     color: white;
-    font-weight: 700;
-`
-const useStyles = makeStyles(theme => ({
+    font-weight: 700;`
 
+const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
     width: '100%',
@@ -37,7 +36,7 @@ const useStyles = makeStyles(theme => ({
   },
   media: {
     height: 0,
-    paddingTop: '56.25%', // 16:9
+    paddingTop: '56.25%',
   },
   avatar: {
     backgroundColor: red[500],
@@ -54,13 +53,11 @@ const useStyles = makeStyles(theme => ({
 
 const capitalizeFirstLetter = (gnomeName: string) => {
   return gnomeName.charAt(1).toUpperCase();
-
 }
 
 const Gnomes = (gnomeProps: IModalGnomeProps, loading: boolean) => {
   const classes = useStyles();
-
-
+  
   return (
     <Grid item xs={12} md={3}>
        <Card className={classes.card}>

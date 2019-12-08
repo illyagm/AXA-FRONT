@@ -5,7 +5,7 @@ import { TextField, makeStyles, Box } from '@material-ui/core';
 import styled from "styled-components";
 import Grid from '@material-ui/core/Grid';
 import { IGnome } from '../models/IGnome';
-import GnomesPagination from './gnomes/GnomesPagination';
+import GnomesPagination from './gnomesPagination/GnomesPagination';
 import 'typeface-roboto';
 
 const MainComponent = () => {
@@ -36,8 +36,10 @@ const MainComponent = () => {
         }
 
     }));
+    const Title = styled.h3`
+    margin: 20px 0;
+    `
     const classes = useStyles();
-
     const gnomeService = new GnomeService();
     const [gnomes, setGnomes] = useState([]);
     const [filteredGnomes, setFilteredGnomes] = useState([]);
@@ -49,40 +51,34 @@ const MainComponent = () => {
     const currentPosts = filteredGnomes.slice(indexOfFirstPost, indexOfLastPost);
     //change page
     const paginate = (pageNumber: any) => { setCurrentPage(pageNumber) };
-    //Filtering consts
+    //filtering consts
     const inputName = useRef(null);
     const inputAge = useRef(null);
     //api request
-    const loadGnomesData = () => {
+    const obtainGnomes = () => {
         gnomeService.getAll().then(response => {
-            setGnomes(response.data.Brastlewark);
-            setFilteredGnomes(response.data.Brastlewark);
-        });
-    };
-
-    //el use effect sustituye al componentDidMount en los functional components - es lo que va a pasar antes de renderizar el componente.
-    useEffect(
-        () => {
-            loadGnomesData();
-        },
-        //en los corchetes podemos indicar una variable, de manera que cada vez que cambie, se efectuará el useEffect
-        [],
-    );
-    const filterGnomes = (e: any, propertyName: string) => {
-            let filteredGnomesList: any = [];
-            if ((inputName as any).current.value !== '' || (inputAge as any).current.value !== '') {
-                filteredGnomesList = gnomes.filter(
-                    (gnome: any) => gnome.age.toString().includes((inputAge as any).current.value)
-                        && gnome.name.includes((inputName as any).current.value)
-                );
-            } else {
-                filteredGnomesList = gnomes.filter((gnome: any) => gnome[propertyName].toString().includes(e.target.value));
-            }
-            setFilteredGnomes(filteredGnomesList);
+        setGnomes(response.data.Brastlewark);
+        setFilteredGnomes(response.data.Brastlewark);
+    });
     }
-    const Title = styled.h3`
-        margin: 20px 0;
-    `
+    useEffect(() => {
+        obtainGnomes();
+    }, []);
+  
+    
+    const filterGnomes = (e: any, propertyName: string) => {
+        let filteredGnomesList: any = [];
+        if ((inputName as any).current.value !== '' || (inputAge as any).current.value !== '') {
+            filteredGnomesList = gnomes.filter(
+                (gnome: any) => gnome.age.toString().includes((inputAge as any).current.value)
+                    && gnome.name.includes((inputName as any).current.value)
+            );
+        } else {
+            filteredGnomesList = gnomes.filter((gnome: any) => gnome[propertyName].toString().includes(e.target.value));
+        }
+        setFilteredGnomes(filteredGnomesList);
+    }
+
     return (
         <div className={classes.root}>
             <Grid container spacing={3}>

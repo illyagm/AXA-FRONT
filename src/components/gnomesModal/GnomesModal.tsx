@@ -72,12 +72,10 @@ const ContainerSection = styled.div `
     justify-content: space-evently;
     align-items: center;
     flex-wrap: wrap;
-    flex-direction: row;
-`
-const SectionTitle = styled.h3 `
-    font-weight: 900;
+    flex-direction: row;`
 
-`
+const SectionTitle = styled.h3 `
+    font-weight: 900;`
 
 const GnomesModal = (propModalData: any) => {
     const classes = useStyles();
@@ -96,12 +94,8 @@ const GnomesModal = (propModalData: any) => {
     return (
         <div>
             <Button className={classes.buttonStyle} variant="outlined" onClick={handleOpen}>Detail</Button>
-            <Modal
-                open={open}
-                onClose={handleClose}
-            >
+            <Modal open={open} onClose={handleClose}>
                 <div style={modalStyle} className={classes.paper} >
-
                     <Card>
                         <CardActionArea>
                             <CardMedia

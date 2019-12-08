@@ -3,13 +3,12 @@ import { MuiThemeProvider, CssBaseline } from '@material-ui/core';
 import Pagination from "material-ui-flat-pagination";
 import { createMuiTheme, makeStyles, createStyles} from "@material-ui/core/styles";
 
-const useStyles = makeStyles((theme) =>
+const useStyles = makeStyles(() =>
   createStyles({
     pagination: () => ({
       '& button': {
       border: ' 1px solid #C0C0C0',
       margin: '0 2.5px',
-      //color: 'black',
       }
     }),
   }),

@@ -1,5 +1,5 @@
 import React from 'react'
-import { IModalGnomeProps } from '../../interfaces/IModalGnomeProps'
+import { IModalGnomeProps } from '../gnomesModal/IModalGnomeProps'
 import { CircularProgress, makeStyles } from '@material-ui/core'
 
 const SpinnerComponent = (gnomeProps: IModalGnomeProps) => {
@@ -12,9 +12,8 @@ const SpinnerComponent = (gnomeProps: IModalGnomeProps) => {
             },
         },
     }));
-    //reacthooks
-    const [progress, setProgress] = React.useState(0);
 
+    const [progress, setProgress] = React.useState(0);
     React.useEffect(() => {
         function tick() {
             // reset when reaching 100%
@@ -29,7 +28,6 @@ const SpinnerComponent = (gnomeProps: IModalGnomeProps) => {
 
     const classes = useStyles();
     return (
-
         <div className={classes.root}>
             <CircularProgress variant="determinate" value={progress} color="secondary" />
         </div>
