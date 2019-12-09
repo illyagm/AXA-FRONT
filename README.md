@@ -2,6 +2,12 @@ AXA FRONT END
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+SET UP THE PROJECT.
+1. Clone Repository.
+2. Install dependencies: npm i
+3. Run the project: npm start.
+4. That's it.
+
 ## Available Scripts
 
 In the project directory, you can run:
