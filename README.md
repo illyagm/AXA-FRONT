@@ -27,6 +27,21 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 
 ## Project overview
 
-FILTER GNOMES (BY NAME AND AGE)
+FILTER GNOMES -BY NAME AND AGE-
 
 ![Alt text](img/filterImg.PNG?raw=true "Title")
+
+PAGINATION COMPONENT
+
+![Alt text](img/paginationImg.PNG?raw=true "Title")
+
+GNOMES LIST
+
+![Alt text](img/listGnomesImg.PNG?raw=true "Title")
+
+GNOME DETAIL
+
+![Alt text](img/detailsGnome.PNG?raw=true "Title")
+
+
+
