@@ -6,7 +6,6 @@ import styled from "styled-components";
 import Grid from '@material-ui/core/Grid';
 import { IGnome } from '../models/IGnome';
 import GnomesPagination from './gnomesPagination/GnomesPagination';
-import 'typeface-roboto';
 
 const MainComponent = () => {
 
@@ -37,8 +36,8 @@ const MainComponent = () => {
 
     }));
     const Title = styled.h3`
-    margin: 20px 0;
-    `
+    margin: 20px 0;`
+
     const classes = useStyles();
     const gnomeService = new GnomeService();
     const [gnomes, setGnomes] = useState([]);
@@ -57,15 +56,15 @@ const MainComponent = () => {
     //api request
     const obtainGnomes = () => {
         gnomeService.getAll().then(response => {
-        setGnomes(response.data.Brastlewark);
-        setFilteredGnomes(response.data.Brastlewark);
-    });
+            setGnomes(response.data.Brastlewark);
+            setFilteredGnomes(response.data.Brastlewark);
+        });
     }
     useEffect(() => {
         obtainGnomes();
     }, []);
-  
-    
+
+
     const filterGnomes = (e: any, propertyName: string) => {
         let filteredGnomesList: any = [];
         if ((inputName as any).current.value !== '' || (inputAge as any).current.value !== '') {
@@ -100,7 +99,6 @@ const MainComponent = () => {
                     })}
                 </Grid>
             </div>
-
             <Box display="flex" justifyContent="center"><GnomesPagination gnomesPerPage={gnomesPerPage} filteredGnomes={filteredGnomes.length} paginate={paginate} /></Box>
         </div>
     )

@@ -16,7 +16,7 @@ function getModalStyle() {
 }
 
 const useStyles = makeStyles(theme => ({
-    
+
     paper: {
         position: 'absolute',
         width: '400px',
@@ -27,54 +27,54 @@ const useStyles = makeStyles(theme => ({
     },
     card: {
         maxWidth: 500,
-      },
-      media: {
+    },
+    media: {
         height: '300px',
         backgroundPositionY: '30%',
-        
-      },
-      avatar: {
+
+    },
+    avatar: {
         backgroundColor: red[500],
-      },
-      buttonStyle: {
-          color: 'black',
-          background: '#D7D0CD',
-          marginLeft: '35%',
-          marginBottom: '10%'
-      },
-      proffesions: {
+    },
+    buttonStyle: {
+        color: 'black',
+        background: '#D7D0CD',
+        marginLeft: '35%',
+        marginBottom: '10%'
+    },
+    proffesions: {
         display: 'flex',
         flexDirection: 'column',
-      },
-      listItem: {
+    },
+    listItem: {
         width: 'auto!important',
         padding: '2px 15px',
         margin: '5px',
         color: 'black',
-      },
-      professionItem: {
+    },
+    professionItem: {
         backgroundColor: '#D7D0CD',
         borderRadius: '20px',
-      },
-      personalDataItem: {
+    },
+    personalDataItem: {
         fontWeight: 500,
-        '& span': { 
+        '& span': {
             fontWeight: '900',
             textDecoration: 'underline',
             marginRight: '5px',
         },
 
-      }
+    }
 }));
 
-const ContainerSection = styled.div `
+const ContainerSection = styled.div`
     display: flex;
     justify-content: space-evently;
     align-items: center;
     flex-wrap: wrap;
     flex-direction: row;`
 
-const SectionTitle = styled.h3 `
+const SectionTitle = styled.h3`
     font-weight: 900;`
 
 const GnomesModal = (propModalData: any) => {
@@ -90,7 +90,7 @@ const GnomesModal = (propModalData: any) => {
     const handleClose = () => {
         setOpen(false);
     };
-    
+
     return (
         <div>
             <Button className={classes.buttonStyle} variant="outlined" onClick={handleOpen}>Detail</Button>
@@ -106,23 +106,23 @@ const GnomesModal = (propModalData: any) => {
                             <CardContent>
                                 <Typography variant="body2" color="textSecondary" component="p">
                                     <SectionTitle>Personal Data </SectionTitle>
-                                    <ListItem className={classes.personalDataItem}><span>Name: </span> { propModalData.propModalData.name} </ListItem>
-                                    <ListItem className={classes.personalDataItem}><span>Age: </span> { propModalData.propModalData.age} </ListItem>
-                                    <ListItem className={classes.personalDataItem}><span>Weight: </span> { propModalData.propModalData.weight} </ListItem>
-                                    <ListItem className={classes.personalDataItem}><span>Height: </span> { propModalData.propModalData.height} </ListItem>
-                                    <ListItem className={classes.personalDataItem}><span>Hair Color: </span> { propModalData.propModalData.hair_color} </ListItem>
+                                    <ListItem className={classes.personalDataItem}><span>Name: </span> {propModalData.propModalData.name} </ListItem>
+                                    <ListItem className={classes.personalDataItem}><span>Age: </span> {propModalData.propModalData.age} </ListItem>
+                                    <ListItem className={classes.personalDataItem}><span>Weight: </span> {propModalData.propModalData.weight} </ListItem>
+                                    <ListItem className={classes.personalDataItem}><span>Height: </span> {propModalData.propModalData.height} </ListItem>
+                                    <ListItem className={classes.personalDataItem}><span>Hair Color: </span> {propModalData.propModalData.hair_color} </ListItem>
                                 </Typography>
-                                <hr/>
-                                <Typography className={classes.proffesions}variant="body2" color="textSecondary" component="p">
+                                <hr />
+                                <Typography className={classes.proffesions} variant="body2" color="textSecondary" component="p">
                                     <SectionTitle>Professions</SectionTitle> <ContainerSection>{propModalData.propModalData.professions.map((profession: any, key: string) => {
-                                        return <ListItem className={classes.professionItem+' '+classes.listItem} key={key}>{profession}</ListItem>
+                                        return <ListItem className={classes.professionItem + ' ' + classes.listItem} key={key}>{profession}</ListItem>
                                     })}
-                                    </ContainerSection> 
+                                    </ContainerSection>
                                 </Typography>
-                                <hr/>
+                                <hr />
                                 <Typography variant="body2" color="textSecondary" component="p">
                                     <SectionTitle>Friends</SectionTitle> <ContainerSection>{propModalData.propModalData.friends.map((friend: any, key: string) => {
-                                        return <ListItem className={classes.listItem}key={key}>{friend}</ListItem>
+                                        return <ListItem className={classes.listItem} key={key}>{friend}</ListItem>
                                     })}
                                     </ContainerSection>
                                 </Typography>

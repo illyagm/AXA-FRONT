@@ -57,17 +57,17 @@ const capitalizeFirstLetter = (gnomeName: string) => {
 
 const Gnomes = (gnomeProps: IModalGnomeProps, loading: boolean) => {
   const classes = useStyles();
-  
+
   return (
     <Grid item xs={12} md={3}>
-       <Card className={classes.card}>
-      <CardHeader
-        avatar={
-          <AvatarColor hairColor={gnomeProps.hair_color as string}>{capitalizeFirstLetter(JSON.stringify(gnomeProps.name))}</AvatarColor>
-        }
-        title={gnomeProps.name}
-        subheader={gnomeProps.age}
-      />
+      <Card className={classes.card}>
+        <CardHeader
+          avatar={
+            <AvatarColor hairColor={gnomeProps.hair_color as string}>{capitalizeFirstLetter(JSON.stringify(gnomeProps.name))}</AvatarColor>
+          }
+          title={gnomeProps.name}
+          subheader={gnomeProps.age}
+        />
         <GnomesModal propModalData={gnomeProps} />
       </Card>
     </Grid>
