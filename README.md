@@ -1,4 +1,4 @@
-AXA FRONT END
+## AXA FRONT END
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -25,5 +25,25 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
+
+
+## Project overview
+
+###### FILTER GNOMES -BY NAME AND AGE-
+
+![Alt text](img/filterImg.PNG?raw=true "Title")
+
+###### PAGINATION COMPONENT
+
+![Alt text](img/paginationImg.PNG?raw=true "Title")
+
+###### GNOMES LIST
+
+![Alt text](img/listGnomesImg.PNG?raw=true "Title")
+
+###### GNOME DETAIL
+
+![Alt text](img/detailsGnome.PNG?raw=true "Title")
+
 
 
