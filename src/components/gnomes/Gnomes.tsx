@@ -30,6 +30,7 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(2),
     textAlign: 'center',
     color: theme.palette.text.secondary,
+    flexGrow: 1,
   },
   card: {
     maxWidth: 345,
@@ -49,6 +50,7 @@ const useStyles = makeStyles(theme => ({
     color: '#fff',
     backgroundColor: deepPurple[500],
   },
+ 
 }));
 
 const capitalizeFirstLetter = (gnomeName: string) => {
@@ -59,7 +61,7 @@ const Gnomes = (gnomeProps: IModalGnomeProps, loading: boolean) => {
   const classes = useStyles();
 
   return (
-    <Grid item xs={12} md={3}>
+    <Grid item xs={12} md={4}>
       <Card className={classes.card}>
         <CardHeader
           avatar={

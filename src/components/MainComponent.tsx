@@ -84,11 +84,11 @@ const MainComponent = () => {
                 <Grid item xs={12} className={classes.styling}>
                     <Title>Brastlewark</Title>
                 </Grid>
-                <Grid item xs={12} md={4}>
-                    <TextField inputRef={inputName} className={classes.InputField} id="standard-basic" label="Filter by Name" onChange={(e: any) => filterGnomes(e, 'name')} />
+                <Grid item xs={12} md={6}>
+                    <TextField inputRef={inputName} className={classes.InputField} type="text" id="standard-basic" label="Filter by Name" onChange={(e: any) => filterGnomes(e, 'name')} />
                 </Grid>
-                <Grid item xs={12} md={2}>
-                    <TextField inputRef={inputAge} className={classes.InputField} id="standard-basic" label="Filter by Age" onChange={(e: any) => filterGnomes(e, 'age')} />
+                <Grid item xs={12} md={6}>
+                    <TextField inputRef={inputAge} className={classes.InputField} type="number" id="standard-basic" label="Filter by Age" onChange={(e: any) => filterGnomes(e, 'age')} />
                 </Grid>
                 <p />
             </Grid>

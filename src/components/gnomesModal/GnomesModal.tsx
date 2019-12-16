@@ -90,6 +90,17 @@ const GnomesModal = (propModalData: any) => {
     const handleClose = () => {
         setOpen(false);
     };
+    const showFriendsTitle = (propModalData:any) => {
+        if (propModalData.propModalData.friends.length !== 0){
+            return <SectionTitle>Friends</SectionTitle>
+        }  
+    }
+    const showProfessionsTitle = (propModalData:any) => {
+        if (propModalData.propModalData.professions.length !== 0){
+            return <SectionTitle>Professions</SectionTitle>
+        }  
+    }
+  
 
     return (
         <div>
@@ -104,8 +115,8 @@ const GnomesModal = (propModalData: any) => {
                                 title="Gnome thumbnail"
                             />
                             <CardContent>
-                                <Typography variant="body2" color="textSecondary" component="p">
-                                    <SectionTitle>Personal Data </SectionTitle>
+                                <Typography variant="body2" color="textSecondary" component="span">
+                                <SectionTitle>Personal Data </SectionTitle>
                                     <ListItem className={classes.personalDataItem}><span>Name: </span> {propModalData.propModalData.name} </ListItem>
                                     <ListItem className={classes.personalDataItem}><span>Age: </span> {propModalData.propModalData.age} </ListItem>
                                     <ListItem className={classes.personalDataItem}><span>Weight: </span> {propModalData.propModalData.weight} </ListItem>
@@ -113,15 +124,15 @@ const GnomesModal = (propModalData: any) => {
                                     <ListItem className={classes.personalDataItem}><span>Hair Color: </span> {propModalData.propModalData.hair_color} </ListItem>
                                 </Typography>
                                 <hr />
-                                <Typography className={classes.proffesions} variant="body2" color="textSecondary" component="p">
-                                    <SectionTitle>Professions</SectionTitle> <ContainerSection>{propModalData.propModalData.professions.map((profession: any, key: string) => {
+                                <Typography className={classes.proffesions} variant="body2" color="textSecondary" component="span">
+                                    {showProfessionsTitle(propModalData)}<ContainerSection>{propModalData.propModalData.professions.map((profession: any, key: string) => {
                                         return <ListItem className={classes.professionItem + ' ' + classes.listItem} key={key}>{profession}</ListItem>
                                     })}
                                     </ContainerSection>
                                 </Typography>
                                 <hr />
-                                <Typography variant="body2" color="textSecondary" component="p">
-                                    <SectionTitle>Friends</SectionTitle> <ContainerSection>{propModalData.propModalData.friends.map((friend: any, key: string) => {
+                                <Typography variant="body2" color="textSecondary" component="span">
+                                     {showFriendsTitle(propModalData)}<ContainerSection>{propModalData.propModalData.friends.map((friend: any, key: string) => {
                                         return <ListItem className={classes.listItem} key={key}>{friend}</ListItem>
                                     })}
                                     </ContainerSection>
